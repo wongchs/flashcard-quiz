@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import viteLogo from '/vite.svg'
+import FlashcardPage from './components/FlashcardPage'
 import './App.css'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-    <h1>hi</h1>
+      <FlashcardPage />
     </>
   )
 }
