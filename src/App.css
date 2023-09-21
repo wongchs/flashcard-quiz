@@ -1,0 +1,21 @@
+.flashcard-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.flashcard {
+  padding: 2rem;
+  border: 1px solid #000000;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-content {
+  text-align: center;
+  overflow: hidden;
+}
