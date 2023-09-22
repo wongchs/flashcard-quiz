@@ -15,6 +15,10 @@
   transform: rotateY(180deg);
 }
 
+.flashcard.flipped .flashcard-content {
+  transform: rotateY(180deg);
+}
+
 .flashcard-content {
   text-align: center;
   overflow: hidden;
