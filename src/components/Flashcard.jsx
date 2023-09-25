@@ -2,25 +2,30 @@ import React, { useState } from 'react';
 
 function Flashcard({ flashcard, onEdit, onDelete }) {
     const [isFlipped, setIsFlipped] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
     const [editedFlashcard, setEditedFlashcard] = useState({ ...flashcard });
 
     const handleFlip = () => {
-        setIsFlipped(!isFlipped);
+        if (!isEditing) {
+            setIsFlipped(!isFlipped);
+        }
     };
 
-    const handleEdit = () => {
+    const handleEdit = (e) => {
+        e.stopPropagation();
         onEdit(editedFlashcard);
-        setIsFlipped(false);
+        setIsEditing(false);
+    };
+
+    const handleEditClick = (e) => {
+        e.stopPropagation();
+        setIsEditing(true);
     };
 
     return (
         <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
             <div className="flashcard-content">
-                {isFlipped ? (
-                    <div className="flashcard-text">
-                        {flashcard.answer}
-                    </div>
-                ) : (
+                {isEditing ? (
                     <div>
                         <textarea
                             rows="2"
@@ -34,6 +39,11 @@ function Flashcard({ flashcard, onEdit, onDelete }) {
                         />
                         <button onClick={handleEdit}>Save</button>
                         <button onClick={onDelete}>Delete</button>
+                    </div>
+                ) : (
+                    <div className="flashcard-text">
+                        {isFlipped ? flashcard.answer : flashcard.question}
+                        {!isFlipped && <button onClick={handleEditClick}>Edit</button>}
                     </div>
                 )}
             </div>
