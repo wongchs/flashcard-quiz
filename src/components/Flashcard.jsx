@@ -1,9 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Flashcard({ flashcard, onEdit, onDelete }) {
     const [isFlipped, setIsFlipped] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editedFlashcard, setEditedFlashcard] = useState({ ...flashcard });
+
+    useEffect(() => {
+        if (flashcard.question === '' || flashcard.answer === '') {
+            setIsEditing(true);
+        }
+    }, [flashcard]);
 
     const handleFlip = () => {
         if (!isEditing) {
