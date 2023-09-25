@@ -32,7 +32,7 @@ function Flashcard({ flashcard, onEdit, onDelete }) {
         <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
             <div className="flashcard-content">
                 {isEditing ? (
-                    <div>
+                    <div className="edit-view">
                         <textarea
                             rows="2"
                             value={editedFlashcard.question}
@@ -43,13 +43,13 @@ function Flashcard({ flashcard, onEdit, onDelete }) {
                             value={editedFlashcard.answer}
                             onChange={(e) => setEditedFlashcard({ ...editedFlashcard, answer: e.target.value })}
                         />
-                        <button onClick={handleEdit}>Save</button>
-                        <button onClick={onDelete}>Delete</button>
+                        <button className="save-btn" onClick={handleEdit}>Save</button>
+                        <button className="delete-btn" onClick={onDelete}>Delete</button>
                     </div>
                 ) : (
                     <div className="flashcard-text">
                         {isFlipped ? flashcard.answer : flashcard.question}
-                        {!isFlipped && <button onClick={handleEditClick}>Edit</button>}
+                        {!isFlipped && <button className='edit-btn' onClick={handleEditClick}>Edit</button>}
                     </div>
                 )}
             </div>
