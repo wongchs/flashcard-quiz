@@ -34,7 +34,7 @@ function FlashcardList() {
 
     return (
         <div className="flashcard-list">
-            <button onClick={addFlashcard}>Add Flashcard</button>
+            <button className='new-card' onClick={addFlashcard}>Add Flashcard</button>
             {flashcards.map(flashcard => (
                 <Flashcard
                     key={flashcard.id}

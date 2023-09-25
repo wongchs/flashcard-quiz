@@ -3,10 +3,12 @@ import FlashcardList from './FlashcardList';
 
 function FlashcardPage() {
     return (
-        <div>
-            <h2>Flashcards</h2>
+        <>
+            <div className="title">
+                <h1>Flashcards</h1>
+            </div>
             <FlashcardList />
-        </div>
+        </>
     );
 }
 
