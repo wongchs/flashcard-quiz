@@ -15,7 +15,7 @@ function FlashcardList() {
     const addFlashcard = () => {
         const newId = Math.max(...flashcards.map(flashcard => flashcard.id)) + 1;
         const newFlashcard = { id: newId, question: '', answer: '' };
-        setFlashcards([...flashcards, newFlashcard]);
+        setFlashcards([newFlashcard, ...flashcards]);
     };
 
     const editFlashcard = (id, updatedFlashcard) => {
