@@ -20,13 +20,13 @@
   border-radius: 10px;
 }
 
-.flashcard.flipped {
+/* .flashcard.flipped {
   transform: rotateY(180deg);
-}
+} */
 
-.flashcard.flipped .flashcard-content {
+/* .flashcard.flipped .flashcard-content {
   transform: rotateY(180deg);
-}
+} */
 
 .flashcard-content {
   text-align: center;
@@ -112,4 +112,16 @@
   background-color: rgb(233, 233, 233);
   border-radius: 10px;
   border: 1px solid grey;
+}
+
+.open-card {
+  transition: transform ease 0.3s;
+}
+
+.open-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.open-card.flipped .open-card-content {
+  transform: rotateY(180deg);
 }

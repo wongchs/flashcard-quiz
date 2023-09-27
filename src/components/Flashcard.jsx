@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 function Flashcard({ flashcard, onEdit, onDelete }) {
     const [isFlipped, setIsFlipped] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editedFlashcard, setEditedFlashcard] = useState({ ...flashcard });
 
@@ -16,6 +17,11 @@ function Flashcard({ flashcard, onEdit, onDelete }) {
             setIsFlipped(!isFlipped);
         }
     };
+
+    const handleOpen = (e) => {
+        e.stopPropagation();
+        setIsOpen(!isOpen);
+    }
 
     const handleEdit = (e) => {
         e.stopPropagation();
@@ -50,7 +56,17 @@ function Flashcard({ flashcard, onEdit, onDelete }) {
                     <div className="flashcard-text">
                         {isFlipped ? flashcard.answer : flashcard.question}
                         {!isFlipped && <button className='edit-btn' onClick={handleEditClick}>Edit</button>}
+                        {!isFlipped && <button className='open-btn' onClick={handleOpen}>Open</button>}
                     </div>
+                )}
+                {isOpen ? (
+                    <dialog className={`open-card ${isFlipped ? 'flipped' : ''}`} open onClick={handleFlip}>
+                        <div className="open-card-content">
+                            {isFlipped ? flashcard.answer : flashcard.question}
+                        </div>
+                    </dialog>
+                ) : (
+                    <h1>bro</h1>
                 )}
             </div>
         </div>
