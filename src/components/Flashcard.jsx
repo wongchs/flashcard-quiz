@@ -60,8 +60,8 @@ function Flashcard({ flashcard, onEdit, onDelete }) {
                     </div>
                 )}
                 {isOpen ? (
-                    <dialog className={`open-card ${isFlipped ? 'flipped' : ''}`} open onClick={handleFlip}>
-                        <div className="open-card-content">
+                    <dialog className={`opencard ${isFlipped ? 'flipped' : ''}`} open onClick={handleFlip}>
+                        <div className="opencard-content">
                             {isFlipped ? flashcard.answer : flashcard.question}
                         </div>
                     </dialog>

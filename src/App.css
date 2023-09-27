@@ -114,14 +114,15 @@
   border: 1px solid grey;
 }
 
-.open-card {
+.opencard {
+  padding: 5rem;
   transition: transform ease 0.3s;
 }
 
-.open-card.flipped {
+.opencard.flipped {
   transform: rotateY(180deg);
 }
 
-.open-card.flipped .open-card-content {
+.opencard.flipped .opencard-content {
   transform: rotateY(180deg);
 }
