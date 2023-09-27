@@ -20,13 +20,13 @@
   border-radius: 10px;
 }
 
-/* .flashcard.flipped {
+.flashcard.flipped {
   transform: rotateY(180deg);
-} */
+}
 
-/* .flashcard.flipped .flashcard-content {
+.flashcard.flipped .flashcard-content {
   transform: rotateY(180deg);
-} */
+}
 
 .flashcard-content {
   text-align: center;

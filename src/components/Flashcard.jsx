@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 function Flashcard({ flashcard, onEdit, onDelete }) {
     const [isFlipped, setIsFlipped] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
+    const [isDialogFlipped, setIsDialogFlipped] = useState(false);
     const [isEditing, setIsEditing] = useState(false);
     const [editedFlashcard, setEditedFlashcard] = useState({ ...flashcard });
+
+    const dialogRef = useRef();
 
     useEffect(() => {
         if (flashcard.question === '' || flashcard.answer === '') {
@@ -12,10 +15,28 @@ function Flashcard({ flashcard, onEdit, onDelete }) {
         }
     }, [flashcard]);
 
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (dialogRef.current && !dialogRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [dialogRef]);
+
     const handleFlip = () => {
         if (!isEditing) {
             setIsFlipped(!isFlipped);
         }
+    };
+
+    const handleDialogFlip = (e) => {
+        e.stopPropagation();
+        setIsDialogFlipped(!isDialogFlipped);
     };
 
     const handleOpen = (e) => {
@@ -60,14 +81,12 @@ function Flashcard({ flashcard, onEdit, onDelete }) {
                     </div>
                 )}
                 {isOpen ? (
-                    <dialog className={`opencard ${isFlipped ? 'flipped' : ''}`} open onClick={handleFlip}>
+                    <dialog className={`opencard ${isDialogFlipped ? 'flipped' : ''}`} open onClick={handleDialogFlip} ref={dialogRef}>
                         <div className="opencard-content">
-                            {isFlipped ? flashcard.answer : flashcard.question}
+                            {isDialogFlipped ? flashcard.answer : flashcard.question}
                         </div>
                     </dialog>
-                ) : (
-                    <h1>bro</h1>
-                )}
+                ) : null}
             </div>
         </div>
     );
