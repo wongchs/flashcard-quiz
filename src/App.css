@@ -115,7 +115,13 @@
 }
 
 .opencard {
-  padding: 5rem;
+  padding: 15rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
   transition: transform ease 0.3s;
 }
 
