@@ -116,11 +116,11 @@
 
 .opencard {
   padding: 7rem;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 0;
-  bottom: 0;
+  position: fixed;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%;
   margin: auto;
   transition: transform ease 0.3s;
 }
